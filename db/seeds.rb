@@ -9,13 +9,15 @@
 
 require "rest-client"
 require "pry"
-  api_url = "http://jservice.io/api/clues?category=780&offset=0"
+  #base_api_url = "http://jservice.io/api/clues?category=780&offset=0"
+  base_api_url = "http://jservice.io/api/clues?"
   american_history_api_id = 780
   food_api_id = 49
   mythology_api_id = 680
   science_api_id = 25
 
 Category.all.destroy_all
+Question.all.destroy_all
 
 puts "creating categories"
   american_history = Category.create(name: "American History")
@@ -30,3 +32,16 @@ puts "creating categories"
   #
   # puts "#{fetch}"
 puts "done creating categories"
+
+puts "making american history questions"
+  american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=0"
+  data = RestClient.get(american_history_api_url)
+  data = JSON.parse(data)
+  #binding.pry
+
+  data.each do |question|
+    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+
+puts "done making american history questions"
