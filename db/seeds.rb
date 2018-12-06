@@ -24,24 +24,103 @@ puts "creating categories"
   food = Category.create(name: "Food")
   mythology = Category.create(name: "Mythology")
   science = Category.create(name: "Science")
-
-
-  # fetch = RestClient.get(url)
-  # fetch = JSON.parse(fetch)
-  # binding.pry
-  #
-  # puts "#{fetch}"
 puts "done creating categories"
 
 puts "making american history questions"
   american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=0"
-  data = RestClient.get(american_history_api_url)
-  data = JSON.parse(data)
-  #binding.pry
+  american_history_question_data = RestClient.get(american_history_api_url)
+  american_history_question_data = JSON.parse(american_history_question_data)
 
-  data.each do |question|
+  american_history_question_data.each do |question|
+    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=100"
+  american_history_question_data = RestClient.get(american_history_api_url)
+  american_history_question_data = JSON.parse(american_history_question_data)
+
+  american_history_question_data.each do |question|
+    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=200"
+  american_history_question_data = RestClient.get(american_history_api_url)
+  american_history_question_data = JSON.parse(american_history_question_data)
+
+  american_history_question_data.each do |question|
     Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
   end
 
 
 puts "done making american history questions"
+
+
+puts "making food questions"
+  food_api_url = "#{base_api_url}category=#{food_api_id}&offset=0"
+  food_question_data = RestClient.get(food_api_url)
+  food_question_data = JSON.parse(food_question_data)
+
+  food_question_data.each do |question|
+    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  food_api_url = "#{base_api_url}category=#{food_api_id}&offset=100"
+  food_question_data = RestClient.get(food_api_url)
+  food_question_data = JSON.parse(food_question_data)
+
+  food_question_data.each do |question|
+    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  food_api_url = "#{base_api_url}category=#{food_api_id}&offset=200"
+  food_question_data = RestClient.get(food_api_url)
+  food_question_data = JSON.parse(food_question_data)
+
+  food_question_data.each do |question|
+    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+puts "done making food questions"
+
+puts "making mythology questions"
+  mythology_api_url = "#{base_api_url}category=#{mythology_api_id}&offset=0"
+  mythology_question_data = RestClient.get(mythology_api_url)
+  mythology_question_data = JSON.parse(mythology_question_data)
+
+  mythology_question_data.each do |question|
+    Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  mythology_api_url = "#{base_api_url}category=#{mythology_api_id}&offset=100"
+  mythology_question_data = RestClient.get(mythology_api_url)
+  mythology_question_data = JSON.parse(mythology_question_data)
+
+  mythology_question_data.each do |question|
+    Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+puts "done making mythology questions"
+
+puts "making science questions"
+  science_api_url = "#{base_api_url}category=#{science_api_id}&offset=0"
+  science_question_data = RestClient.get(science_api_url)
+  science_question_data = JSON.parse(science_question_data)
+
+  science_question_data.each do |question|
+    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  science_api_url = "#{base_api_url}category=#{science_api_id}&offset=100"
+  science_question_data = RestClient.get(science_api_url)
+  science_question_data = JSON.parse(science_question_data)
+
+  science_question_data.each do |question|
+    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+
+  science_api_url = "#{base_api_url}category=#{science_api_id}&offset=200"
+  science_question_data = RestClient.get(science_api_url)
+  science_question_data = JSON.parse(science_question_data)
+
+  science_question_data.each do |question|
+    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+  end
+puts "done making science questions"
