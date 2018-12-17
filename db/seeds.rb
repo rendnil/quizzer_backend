@@ -32,7 +32,9 @@ puts "making american history questions"
   american_history_question_data = JSON.parse(american_history_question_data)
 
   american_history_question_data.each do |question|
-    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=100"
@@ -40,7 +42,9 @@ puts "making american history questions"
   american_history_question_data = JSON.parse(american_history_question_data)
 
   american_history_question_data.each do |question|
-    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   american_history_api_url = "#{base_api_url}category=#{american_history_api_id}&offset=200"
@@ -48,7 +52,9 @@ puts "making american history questions"
   american_history_question_data = JSON.parse(american_history_question_data)
 
   american_history_question_data.each do |question|
-    Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: american_history.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
 
@@ -61,7 +67,9 @@ puts "making food questions"
   food_question_data = JSON.parse(food_question_data)
 
   food_question_data.each do |question|
-    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   food_api_url = "#{base_api_url}category=#{food_api_id}&offset=100"
@@ -69,7 +77,9 @@ puts "making food questions"
   food_question_data = JSON.parse(food_question_data)
 
   food_question_data.each do |question|
-    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   food_api_url = "#{base_api_url}category=#{food_api_id}&offset=200"
@@ -77,7 +87,9 @@ puts "making food questions"
   food_question_data = JSON.parse(food_question_data)
 
   food_question_data.each do |question|
-    Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: food.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 puts "done making food questions"
 
@@ -87,7 +99,9 @@ puts "making mythology questions"
   mythology_question_data = JSON.parse(mythology_question_data)
 
   mythology_question_data.each do |question|
-    Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   mythology_api_url = "#{base_api_url}category=#{mythology_api_id}&offset=100"
@@ -95,7 +109,9 @@ puts "making mythology questions"
   mythology_question_data = JSON.parse(mythology_question_data)
 
   mythology_question_data.each do |question|
-    Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: mythology.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 puts "done making mythology questions"
 
@@ -105,7 +121,9 @@ puts "making science questions"
   science_question_data = JSON.parse(science_question_data)
 
   science_question_data.each do |question|
-    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   science_api_url = "#{base_api_url}category=#{science_api_id}&offset=100"
@@ -113,7 +131,9 @@ puts "making science questions"
   science_question_data = JSON.parse(science_question_data)
 
   science_question_data.each do |question|
-    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 
   science_api_url = "#{base_api_url}category=#{science_api_id}&offset=200"
@@ -121,6 +141,8 @@ puts "making science questions"
   science_question_data = JSON.parse(science_question_data)
 
   science_question_data.each do |question|
-    Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      Question.create(category_id: science.id, question: question["question"], answer: question["answer"], value: question["value"])
+    end
   end
 puts "done making science questions"
