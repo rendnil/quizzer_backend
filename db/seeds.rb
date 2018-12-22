@@ -53,7 +53,7 @@ categories.each do |category|
     question_data = JSON.parse(RestClient.get(api_url))
 
     question_data.each do |question|
-      if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false) && (question["answer"].include?("\n") == false)
+      if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false) && (question["answer"].include?("\'") == false)
         Question.create(category_id: category[:category_name].id, question: question["question"], answer: question["answer"], value: question["value"])
       end
 
