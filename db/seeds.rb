@@ -5,27 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-
 require "rest-client"
 require "pry"
-#base_api_url = "http://jservice.io/api/clues?category=780&offset=0"
-base_api_url = "http://jservice.io/api/clues?"
-american_history_api_id = 780
-food_api_id = 49
-mythology_api_id = 680
-science_api_id = 25
-us_cities_api_id = 7
-people_api_id = 442
-television_api_id = 67
-history_api_id = 114
-pop_music_api_id = 770
-universities_api_id = 672
-literature_api_id = 574
-movies_api_id = 309
 
 Category.all.destroy_all
 Question.all.destroy_all
+
+base_api_url = "http://jservice.io/api/clues?"
 
 puts "creating categories"
   american_history = Category.create(name: "American History")
@@ -58,20 +44,23 @@ categories = [
 ]
 
 categories.each do |category|
-  # binding.pry
   puts "making #{category[:category_name].name} questions"
+
   offset = 0
+
   while offset<category[:count]
     api_url = "#{base_api_url}category=#{category[:id]}&offset=#{offset}"
     question_data = JSON.parse(RestClient.get(api_url))
 
     question_data.each do |question|
-      if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false)
+      if (question["question"].length>1) && (question["answer"].length>1) && (question["answer"].include?("<") == false) && (question["answer"].include?("\n") == false)
         Question.create(category_id: category[:category_name].id, question: question["question"], answer: question["answer"], value: question["value"])
       end
+
     end
 
     offset +=100
+
   end
   puts "done making #{category[:category_name].name} questions"
 end
